@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Страница с огромными окнами</title>
+    <style>
+        body {
+		
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100vh;
+			     background-image: url('https://images.wallpapersden.com/image/download/the-mountain_bGZnbW6UmZqaraWkpJRobWllrWdma2U.jpg');
+    background-size: cover;
+	background-repeat: no-repeat; 
+    
+        }
+ 
+        .top-panel  {
+		     margin-left: 43%; /* Внешний отступ слева */
+    margin-right: 43%;/* Внешний отступ справа */
+ 
+			 
+		     color: rgba(255, 255, 255, 0);
+            
+ 
+            text-align: center;
+  
+ 
+			font-size: 50px;
+            animation: shadowBlink 2s infinite alternate;
+            animation-timing-function: linear;
+        }
+	 .bottom-panel {
+    color: rgba(255, 255, 255, 0);
+    background-color: rgba(51, 51, 51, 0);
+    display: flex;
+    align-items: center;
+    justify-content: center; /* Добавьте это свойство */
+    padding: 20px;
+    animation: shadowBOX 20s infinite alternate;
+    animation-timing-function: linear;
+}
+@keyframes shadowBOX	 {
+            0% {
+                box-shadow: 0 0 100px rgba(0, 255, 0, 0.9);
+ 
+            }
+            100% {
+                box-shadow: 0 0 200px rgba(255, 0, 0, 0.9);
+ 
+            }
+}
+ 
+
+@keyframes shadowBOX1	 {
+            0% {
+                box-shadow: 0 0 100px rgba(0, 0, 255, 0.9);
+            }
+            100% {
+                box-shadow: 0 0 100px rgba(255, 0, 0, 0.9);
+            }
+}
+
+
+        @keyframes shadowBlink {
+            0% {
+                text-shadow: 8px 5px 6px rgba(255, 255, 255, 1);
+ 
+            }
+            100% {
+                text-shadow: 8px 5px 0px rgba(255, 255, 255, 0);
+ 
+            }
+        }
+
+    .divider {
+    width: 1px; /* Ширина разделителя */
+    height: 50%; /* Высота разделителя (равна высоте контейнера) */
+    background-color: #ccc; /* Цвет разделителя */
+    margin: 0 20px; /* Внешний отступ между разделителями и элементами */
+    }
+	
+.item_menu {
+    font-size: 30px; /* Размер шрифта текста в элементе меню */
+  
+    color: white; /* Цвет текста элемента меню */
+    border-radius: 5px; /* Закругление углов элемента меню */
+}
+
+
+      .center {
+	  position:related;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	
+
+}
+
+        .window {
+ 
+            background-color: #f0f0f0;
+            border: 1px solid #333;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+            margin: 10px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+			border-radius: 10px;
+			animation: shadowBOX1 5s infinite alternate;
+			animation-timing-function: linear;
+			
+        }
+ 
+        .fullscreen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 999;
+        }
+
+        /* Добавляем анимацию увеличения размера при наведении */
+        .window:hover {
+            transform: scale(1.5);
+        }
+		
+		
+		/* Стили для кнопок в полноэкранном режиме */
+ .button-panel1 {
+ 
+             
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0);
+            margin: 10px;
+			 margin-bottom: 50px;
+            cursor: pointer;
+           
+            display: flex;
+            justify-content: center;
+  
+		 
+	 
+        }
+ 
+ 
+/* Добавьте стили для выравнивания кнопок в центре */
+.button-container {
+ 
+    top: 50%; /* Размещение по вертикали посередине */
+    left: 10px; /* Отступ от левого края */
+    text-font:48px;
+    z-index: 9999; /* Позиция поверх всего */
+ 
+}
+
+.overlay-button {
+    margin-right: 10px;
+    background-color: rgba(255, 0, 0, 0.1);
+    border-radius:20px;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-size:100px; /* Увеличьте размер шрифта по вашему усмотрению */
+    padding: 10px 20px; /* Подберите подходящие отступы для кнопок */
+}
+
+
+    </style>
+</head>
+<body>
+     
+    <!-- Текст будет находиться выше гиф-изображения -->
+    <div class="top-panel">Я ВДОМА</div>
+	
+    <div class="center">
+	<!-- Добавляем кнопку "Ліво" и "Право" -->
+    
+        <div class="window" id="video-container" onclick="toggleFullScreen(this)">
+		
+            <img id="video-element" src="http://127.0.0.1:5000/video_feed" alt="Video Stream" style="width: 100%; height: 100%; border-radius: 10px;" >
+            <!-- Контейнер для кнопок -->
+            
+        </div>
+		
+        <div class="window" onclick="toggleFullScreen(this)">Окно 2</div>
+		</div>
+	 <div class="button-panel1">
+ <button class="button-container overlay-button" onclick="sendDataToServerWithDelayAndDisableButton(this, -15)">  <  </button>
+<button class="button-container overlay-button" onclick="sendDataToServerWithDelayAndDisableButton(this, 15)"> > </button>
+
+
+
+
+
+    </div>
+     	
+    
+       
+		
+    <div class="bottom-panel">
+		<div class="divider"></div>
+	    <div class="item_menu">Прочитав</div>
+		<div class="divider"></div>
+		 <div class="item_menu">став</div>
+		<div class="divider"></div>
+		 <div class="item_menu">геєм</div>
+		<div class="divider"></div>
+	</div>
+
+    <script>
+ 
+		
+		
+// Функция для переключения полноэкранного режима
+function toggleFullScreen(element) {
+    if (!document.fullscreenElement) {
+        element.requestFullscreen().catch(err => {
+            console.error(`Ошибка при переводе в полноэкранный режим: ${err}`);
+        });
+    } else {
+        document.exitFullscreen();
+    }
+
+  
+}
+ function sendDataToServerWithDelayAndDisableButton(button, value) {
+    // Деактивируем кнопку
+    button.disabled = true;
+    
+    // Отправляем данные на сервер
+    sendDataToServer(value);
+
+    // Ждем полсекунды и затем активируем кнопку снова
+    setTimeout(function() {
+        button.disabled = false;
+    },1200); // 500 миллисекунд (полсекунды)
+}
+
+ 
+ 
+
+
+ 
+// Функция для отправки данных на сервер с использованием AJAX
+function sendDataToServer(value) {
+
+  
+        const xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://192.168.31.145:5000/process_data", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        const data = JSON.stringify({ value: value }); // Преобразовываем значение в JSON
+        xhr.send(data);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                // Здесь можно обработать ответ от сервера
+                console.log("Данные успешно отправлены на сервер.");
+            }
+        };
+     
+}
+
+
+// Остальной JavaScript остается без изменений
+// ...
+
+		
+    </script>
+</body>
+</html>
